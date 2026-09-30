@@ -1,20 +1,48 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#070812"><title>ورود | محمد پمپ نت</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0a0e27">
+  <title>ورود | محمد پمپ نت</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
 </head>
 <body class="login-page">
-  <div class="ambient"></div><main class="login-card glass">
-    <div class="brand-mark"><span>PN</span></div><p class="eyebrow">محمد پمپ نت</p><h1>PompNet</h1>
+  <div class="ambient"></div>
+  
+  <main class="login-card glass">
+    <div class="brand-mark"><span>PN</span></div>
+    <p class="eyebrow">محمد پمپ نت</p>
+    <h1>PompNet</h1>
     <p class="tagline">Fast • Secure • Unlimited</p>
-    {% with messages = get_flashed_messages(with_categories=true) %}{% for category, message in messages %}<div class="alert {{ category }}">{{ message }}</div>{% endfor %}{% endwith %}
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="alert {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+    
     <form method="post" autocomplete="on" data-sound="login">
       <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
-      <label>نام کاربری<input name="username" required autocomplete="username" autofocus></label>
-      <label>رمز عبور<input name="password" type="password" required autocomplete="current-password"></label>
-      <button class="button primary wide" type="submit">ورود به پنل <span>←</span></button>
-    </form><p class="muted small">دسترسی امن مدیریت زیرساخت شما</p>
-  </main><script src="{{ url_for('static', filename='js/app.js') }}"></script>
-</body></html>
+      
+      <label>نام کاربری
+        <input name="username" required autocomplete="username" autofocus>
+      </label>
+      
+      <label>رمز عبور
+        <input name="password" type="password" required autocomplete="current-password">
+      </label>
+      
+      <button class="button primary wide" type="submit" data-sound="login">
+        ورود به پنل <span>←</span>
+      </button>
+    </form>
+    
+    <p class="muted small" style="margin-top: 20px; text-align: center;">
+      دسترسی امن مدیریت زیرساخت شما
+    </p>
+  </main>
+  
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
